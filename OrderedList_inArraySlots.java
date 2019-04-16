@@ -15,15 +15,20 @@ public class OrderedList_inArraySlots
     /** 
       construct order from an unordered ArrayList
      */
-    public OrderedList_inArraySlots
-            ( ArrayList<Integer> unordered) {
-        this();  // violates the directions for this hw
-        
-        System.out.println( 
-            "Change this to report on progress."
-          + System.lineSeparator()
-          + "You were going to do that even without prompting, right?"
-          );
+    public OrderedList_inArraySlots( ArrayList<Integer> unordered) {
+		 for (int i = 0; i< unordered.size(); i++){
+			 int index = champIndex(unordered,i);
+			 int small = unordered.get(index);
+			 unordered.set(index,unordered.get(i));
+			 unordered.set(i,small);
+			 System.out.println( 
+				 "Change this to report on progress."
+				 + unordered
+				 + System.lineSeparator()
+				 + "You were going to do that even without prompting, right?"
+			 );
+		 }
+		 list_iAS = unordered;
     }
 
 
@@ -32,9 +37,17 @@ public class OrderedList_inArraySlots
       Write good English here, reflecting good thinking.
       @return ??
      */
-     private int champIndex() {
-        return 0;  // replace this line
-     }
+     private int champIndex(ArrayList<Integer> list, int beginning) {
+		 int minValue = Integer.MAX_VALUE;
+		 int smallestIndex =  0;
+		 for (int i = beginning; i < list.size(); i++){
+			 if (minValue>list.get(i)){
+				 smallestIndex = i;
+				 minValue = list.get(i);
+			 }
+		 }
+		 return smallestIndex;
+	}
 
 
     // ------ code from previous assignments below here ----
